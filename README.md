@@ -6,7 +6,8 @@ Hands-on Spring Boot microservices projects, from basic to advanced.
 |---|---------|--------|
 | 1 | [Basic REST microservices](01-basic-rest-microservices) | REST communication, database per service, timeouts, error handling |
 | 2 | [Service discovery and API Gateway](02-service-discovery-gateway) | Eureka, Spring Cloud Gateway, client-side load balancing |
-| 3 | Coming soon | Resilience4j, distributed tracing |
+| 3 | [Resilience and tracing](03-resilience-circuit-breaker) | Circuit breaker, retry, fallback, distributed tracing |
 | 4 | Coming soon | Kafka, Saga pattern |
 | 5 | Coming soon | Security, Docker, Kubernetes |
+
 
