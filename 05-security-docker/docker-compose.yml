@@ -1,0 +1,43 @@
+services:
+  eureka-server:
+    build: ./eureka-server
+    ports:
+      - "8761:8761"          # dashboard, for learning only
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xmx256m"
+
+  auth-service:
+    build: ./auth-service
+    depends_on:
+      - eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      JWT_SECRET: ${JWT_SECRET:-demo-secret-key-change-me-at-least-32-bytes-long}
+      JAVA_TOOL_OPTIONS: "-Xmx256m"
+
+  product-service:
+    build: ./product-service
+    depends_on:
+      - eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      JAVA_TOOL_OPTIONS: "-Xmx256m"
+
+  order-service:
+    build: ./order-service
+    depends_on:
+      - eureka-server
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      JAVA_TOOL_OPTIONS: "-Xmx256m"
+
+  api-gateway:
+    build: ./api-gateway
+    depends_on:
+      - eureka-server
+    ports:
+      - "8080:8080"          # the only entry point to the system
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      JWT_SECRET: ${JWT_SECRET:-demo-secret-key-change-me-at-least-32-bytes-long}
+      JAVA_TOOL_OPTIONS: "-Xmx256m"
